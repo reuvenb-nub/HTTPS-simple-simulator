@@ -1,0 +1,10 @@
+D:\Move\UIT\HK4\LTM\Project\Client\bin\Debug\Client.exe.config
+D:\Move\UIT\HK4\LTM\Project\Client\bin\Debug\Client.exe
+D:\Move\UIT\HK4\LTM\Project\Client\bin\Debug\Client.pdb
+D:\Move\UIT\HK4\LTM\Project\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+D:\Move\UIT\HK4\LTM\Project\Client\obj\Debug\Client.Form1.resources
+D:\Move\UIT\HK4\LTM\Project\Client\obj\Debug\Client.Properties.Resources.resources
+D:\Move\UIT\HK4\LTM\Project\Client\obj\Debug\Client.csproj.GenerateResource.cache
+D:\Move\UIT\HK4\LTM\Project\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\Move\UIT\HK4\LTM\Project\Client\obj\Debug\Client.exe
+D:\Move\UIT\HK4\LTM\Project\Client\obj\Debug\Client.pdb
