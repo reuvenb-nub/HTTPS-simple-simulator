@@ -86,14 +86,14 @@ namespace Client
                 string reqHeader = "";
 
                 // body in case of POST, PUT
-                string reqBody = KeyTextBox.Text + "=" + ValueTextBox.Text;
+                string reqBody = "";
                 string request = "";
                 switch (MethodComboBox.Text)
                 {
                     case "GET":
                         {
                             reqHeader = "GET /" + resource + " HTTP/1.1\r\n" // request line
-                                                                                     // request headers
+                            // request headers
                                + "Host: " + ServIPTextBox.Text + "\r\n"
                                + "Connection: keep-alive \r\n"
                                + "Upgrade-Insecure-Requests: 1\r\n"
@@ -110,7 +110,7 @@ namespace Client
                     case "DELETE":
                         {
                             reqHeader = "DELETE /" + resource + " HTTP/1.1\r\n" // request line
-                                                                                // request headers
+                             // request headers
                                + "Host: " + ServIPTextBox.Text + "\r\n"
                                + "Connection: keep-alive \r\n"
                                + "Upgrade-Insecure-Requests: 1\r\n"
@@ -126,10 +126,14 @@ namespace Client
                         break;
                     case "POST":
                         {
+                            reqBody = "{\r\n  "
+                                        + KeyTextBox.Text + ": " + ValueTextBox.Text + "\r\n"
+                                        + "}\r\n";
+                            // Header
                             reqHeader = "POST /" + resource + " HTTP/1.1\r\n" // request line
                                // request headers
                                + "Host: " + ServIPTextBox.Text + "\r\n"
-                               + "Content-type: application/x-www-form-urlencoded\r\n"
+                               + "Content-type: application/json\r\n"
                                + "Content-length: " + reqBody.Length + "\r\n"
                                + "Connection: keep-alive \r\n"
                                + "Upgrade-Insecure-Requests: 1\r\n"
@@ -204,9 +208,7 @@ namespace Client
                         MessageBox.Show("Connected");
                     }
                     
-                }
-                
-                 
+                }                             
                 
                 Task.Run(() => ReceiveMessage());
 
