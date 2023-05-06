@@ -33,10 +33,11 @@
             // 
             // tbx_log
             // 
-            tbx_log.Location = new Point(106, 46);
+            tbx_log.Location = new Point(56, 41);
             tbx_log.Multiline = true;
             tbx_log.Name = "tbx_log";
-            tbx_log.Size = new Size(549, 359);
+            tbx_log.ScrollBars = ScrollBars.Both;
+            tbx_log.Size = new Size(672, 361);
             tbx_log.TabIndex = 0;
             // 
             // Server

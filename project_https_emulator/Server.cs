@@ -65,39 +65,45 @@ namespace project_https_emulator
             }
         }
 
-        private void HandleMessage(string message, TcpClient client) {
+        private void HandleMessage(string message, TcpClient client)
+        {
+            AddMessageToLog(message);
             string command = message.Substring(0, message.IndexOf("\r\n"));
             string[] cfields = command.Split(" ");
             string request_method = cfields[0];
             string resource = cfields[1];
             string version = cfields[2];
 
-            if (request_method == "GET") {
+            if (request_method == "GET")
+            {
                 SendMessage(GETMethod(resource), client);
             }
-            else if (request_method == "POST") {
+            else if (request_method == "POST")
+            {
 
             }
-            else if (request_method == "DELETE") {
-            
+            else if (request_method == "DELETE")
+            {
+
             }
         }
 
-        private string GETMethod(string res) {
-            string filePath = "../resources" + res;
-        try
-        {   
-            StreamReader rd = new StreamReader(filePath);
-            string payload = rd.ReadToEnd();
-            DateTime time = DateTime.Now;
-            string header = "HTTP/1.1 200 OK\r\n" + time.ToString() + "\r\n";
-            return header + payload;
-        }
-        catch (Exception ex)
+        private string GETMethod(string res)
         {
-            Console.WriteLine("An error occurred while reading the file: " + ex.Message);
-            return "HTTP/1.1 404 Not Found\r\n";
-        }
+            string filePath = "../resources" + res;
+            try
+            {
+                StreamReader rd = new StreamReader(filePath);
+                string payload = rd.ReadToEnd();
+                DateTime time = DateTime.Now;
+                string header = "HTTP/1.1 200 OK\r\n" + time.ToString() + "\r\n\r\n";
+                return header + payload;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while reading the file: " + ex.Message);
+                return "HTTP/1.1 404 Not Found\r\n";
+            }
         }
 
         private void SendMessage(string message, TcpClient client)
