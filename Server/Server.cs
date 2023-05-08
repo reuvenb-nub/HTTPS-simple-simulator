@@ -76,7 +76,11 @@ namespace project_https_emulator
             string resource = cfields[1];
             string version = cfields[2];
 
-            string body = message.Split("\r\n\r\n")[1];
+            string body = message.Split("\r\n\r\n")[1].Trim();
+            
+
+            string data = body.Remove(body.Length - 1, 1).Remove(0, 1).Trim();
+            
 
             if (request_method == "GET")
             {
@@ -84,7 +88,7 @@ namespace project_https_emulator
             }
             else if (request_method == "POST")
             {   
-                SendMessage(POSTMethod(resource, body), client);
+                SendMessage(POSTMethod(resource, data), client);
             }
             else if (request_method == "DELETE")
             {
@@ -118,14 +122,28 @@ namespace project_https_emulator
             }
         }
 
-        private string POSTMethod(string res, string body) {
+        private string POSTMethod(string res, string a) {
             string filePath = "../resources" + res;
             try
             {
-                StreamReader rd = new StreamReader(filePath);
-                string data = rd.ReadToEnd();
-                string key = data.Substring(body.IndexOf("{") + 1, body.IndexOf("}")).Trim();
-                MessageBox.Show(key);
+                string key = "\"" + a.Split(": ")[0] + "\"";
+                string value = "\"" + a.Split(": ")[1] + "\"";
+
+                string data = File.ReadAllText(filePath);
+
+                string data_temp = data.Remove(data.Length - 1, 1).Remove(0, 1).Trim();
+
+                string[] data_pair = data_temp.Split(",\r\n");
+
+                foreach (string pair in data_pair) {
+                    string temp_key = pair.Split(": ")[0].Trim();
+                    string temp_value = pair.Split(": ")[1].Trim();
+                    if (temp_key == key) {
+                        data = data.Replace(temp_value, value);
+                    }
+                }
+                File.WriteAllText(filePath, data);
+
                 DateTime timestamp = DateTime.Now;
                 string info = "Server: C# server\r\n"
                             + "Content-Type: text/html/json; charset=UTF-8\r\n"
