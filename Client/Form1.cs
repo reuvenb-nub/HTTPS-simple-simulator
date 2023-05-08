@@ -65,11 +65,11 @@ namespace Client
                 response = Encoding.ASCII.GetString(buffer, 0, b);
                 MessageBox.Show(response);
                 // Print the response to the sceen
-                if (already_print_flag == 0)
+                if (0 == 0)
                 {
                     print_message(response);
                     print_status(response);
-                    already_print_flag = 1;
+                    //already_print_flag = 1;
                 }
                 else
                 {
