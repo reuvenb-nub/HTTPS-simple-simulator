@@ -41,7 +41,6 @@ namespace Client
             this.statusLabel = new System.Windows.Forms.Label();
             this.KeyLabel = new System.Windows.Forms.Label();
             this.ValueLabel = new System.Windows.Forms.Label();
-            this.KeyTextBox = new System.Windows.Forms.TextBox();
             this.ValueTextBox = new System.Windows.Forms.TextBox();
             this.SuggestLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@ namespace Client
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.PreviewButton = new System.Windows.Forms.Button();
             this.RawButton = new System.Windows.Forms.Button();
+            this.KeyComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // MethodComboBox
@@ -143,9 +143,9 @@ namespace Client
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(401, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 29);
+            this.label3.Size = new System.Drawing.Size(217, 29);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Response";
+            this.label3.Text = "Response headers";
             // 
             // statusLabel
             // 
@@ -179,15 +179,6 @@ namespace Client
             this.ValueLabel.TabIndex = 13;
             this.ValueLabel.Text = "Value";
             this.ValueLabel.Visible = false;
-            // 
-            // KeyTextBox
-            // 
-            this.KeyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KeyTextBox.Location = new System.Drawing.Point(168, 225);
-            this.KeyTextBox.Name = "KeyTextBox";
-            this.KeyTextBox.Size = new System.Drawing.Size(200, 36);
-            this.KeyTextBox.TabIndex = 14;
-            this.KeyTextBox.Visible = false;
             // 
             // ValueTextBox
             // 
@@ -251,10 +242,11 @@ namespace Client
             // 
             // PreviewButton
             // 
-            this.PreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreviewButton.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.PreviewButton.Location = new System.Drawing.Point(520, 365);
             this.PreviewButton.Name = "PreviewButton";
-            this.PreviewButton.Size = new System.Drawing.Size(109, 43);
+            this.PreviewButton.Size = new System.Drawing.Size(122, 43);
             this.PreviewButton.TabIndex = 22;
             this.PreviewButton.Text = "Preview";
             this.PreviewButton.UseVisualStyleBackColor = true;
@@ -262,7 +254,8 @@ namespace Client
             // 
             // RawButton
             // 
-            this.RawButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RawButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RawButton.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.RawButton.Location = new System.Drawing.Point(406, 365);
             this.RawButton.Name = "RawButton";
             this.RawButton.Size = new System.Drawing.Size(109, 43);
@@ -271,11 +264,27 @@ namespace Client
             this.RawButton.UseVisualStyleBackColor = true;
             this.RawButton.Click += new System.EventHandler(this.RawButton_Click);
             // 
+            // KeyComboBox
+            // 
+            this.KeyComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyComboBox.FormattingEnabled = true;
+            this.KeyComboBox.Items.AddRange(new object[] {
+            "name",
+            "age",
+            "gender"});
+            this.KeyComboBox.Location = new System.Drawing.Point(168, 228);
+            this.KeyComboBox.Name = "KeyComboBox";
+            this.KeyComboBox.Size = new System.Drawing.Size(197, 37);
+            this.KeyComboBox.TabIndex = 24;
+            this.KeyComboBox.Text = "name";
+            this.KeyComboBox.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 761);
+            this.Controls.Add(this.KeyComboBox);
             this.Controls.Add(this.RawButton);
             this.Controls.Add(this.PreviewButton);
             this.Controls.Add(this.webBrowser);
@@ -284,7 +293,6 @@ namespace Client
             this.Controls.Add(this.BodyTextBox);
             this.Controls.Add(this.SuggestLabel);
             this.Controls.Add(this.ValueTextBox);
-            this.Controls.Add(this.KeyTextBox);
             this.Controls.Add(this.ValueLabel);
             this.Controls.Add(this.KeyLabel);
             this.Controls.Add(this.statusLabel);
@@ -318,7 +326,6 @@ namespace Client
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Label KeyLabel;
         private System.Windows.Forms.Label ValueLabel;
-        private System.Windows.Forms.TextBox KeyTextBox;
         private System.Windows.Forms.TextBox ValueTextBox;
         private System.Windows.Forms.Label SuggestLabel;
         private System.Windows.Forms.Label label4;
@@ -327,6 +334,7 @@ namespace Client
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Button PreviewButton;
         private System.Windows.Forms.Button RawButton;
+        private System.Windows.Forms.ComboBox KeyComboBox;
     }
 }
 

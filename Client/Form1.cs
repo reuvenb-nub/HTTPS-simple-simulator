@@ -18,7 +18,7 @@ namespace Client
         TcpClient tcpClient;
         List<KeyValuePair<string, int>> serverIP_PortList = new List<KeyValuePair<string, int>>();
         NetworkStream stream;
-        int already_TCPconnected_flag = 0, already_print_flag = 0;
+        int already_TCPconnected_flag = 0;
         public Form1()
         {
             InitializeComponent();
@@ -71,17 +71,11 @@ namespace Client
                 // convert response from byte to string
                 response = Encoding.ASCII.GetString(buffer, 0, b);
                 MessageBox.Show(response);
+
                 // Print the response to the sceen
-                if (0 == 0)
-                {
-                    print_message(response);
-                    print_status(response);
-                    //already_print_flag = 1;
-                }
-                else
-                {
-                    break; // đã print ra thì thoát
-                }
+                print_message(response);
+                print_status(response);
+                
                 stream.Flush();
             }                
         }
@@ -134,7 +128,7 @@ namespace Client
                     case "POST":
                         {
                             reqBody = "{\r\n  "
-                                        + KeyTextBox.Text + ": " + ValueTextBox.Text + "\r\n"
+                                        + KeyComboBox.Text + ": " + ValueTextBox.Text + "\r\n"
                                         + "}\r\n";
                             // Header
                             reqHeader = "POST /" + resource + " HTTP/1.1\r\n" // request line
@@ -211,7 +205,6 @@ namespace Client
                         serverIP_PortList.Add(new KeyValuePair<string, int>(ServIPTextBox.Text, Int32.Parse(ServPortTextBox.Text)));
                         tcpClient.Connect(ServIPTextBox.Text, Int32.Parse(ServPortTextBox.Text));
                         stream = tcpClient.GetStream();
-                        already_print_flag = 0;
                         MessageBox.Show("Connected");
                     }
                     
@@ -236,7 +229,7 @@ namespace Client
             {
                 ValueTextBox.Visible = true;
                 ValueLabel.Visible = true;
-                KeyTextBox.Visible = true;
+                KeyComboBox.Visible = true;
                 KeyLabel.Visible = true;
                 SendButton.Location = new Point(168, 331);
             }
@@ -244,7 +237,7 @@ namespace Client
             {
                 ValueTextBox.Visible = false;
                 ValueLabel.Visible = false;
-                KeyTextBox.Visible = false;
+                KeyComboBox.Visible = false;
                 KeyLabel.Visible = false;
                 SendButton.Location = new Point(168, 225);
             }
@@ -252,7 +245,7 @@ namespace Client
             {
                 ValueTextBox.Visible = false;
                 ValueLabel.Visible = false;
-                KeyTextBox.Visible = false;
+                KeyComboBox.Visible = false;
                 KeyLabel.Visible = false;
                 SendButton.Location = new Point(168, 225);
             }
