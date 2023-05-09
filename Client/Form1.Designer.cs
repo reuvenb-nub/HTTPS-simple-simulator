@@ -47,6 +47,9 @@ namespace Client
             this.label4 = new System.Windows.Forms.Label();
             this.BodyTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
+            this.PreviewButton = new System.Windows.Forms.Button();
+            this.RawButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MethodComboBox
@@ -220,7 +223,7 @@ namespace Client
             // BodyTextBox
             // 
             this.BodyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BodyTextBox.Location = new System.Drawing.Point(406, 365);
+            this.BodyTextBox.Location = new System.Drawing.Point(407, 421);
             this.BodyTextBox.Multiline = true;
             this.BodyTextBox.Name = "BodyTextBox";
             this.BodyTextBox.ReadOnly = true;
@@ -238,11 +241,44 @@ namespace Client
             this.label5.TabIndex = 19;
             this.label5.Text = "Status:";
             // 
+            // webBrowser
+            // 
+            this.webBrowser.Location = new System.Drawing.Point(407, 422);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(774, 339);
+            this.webBrowser.TabIndex = 21;
+            // 
+            // PreviewButton
+            // 
+            this.PreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreviewButton.Location = new System.Drawing.Point(520, 365);
+            this.PreviewButton.Name = "PreviewButton";
+            this.PreviewButton.Size = new System.Drawing.Size(109, 43);
+            this.PreviewButton.TabIndex = 22;
+            this.PreviewButton.Text = "Preview";
+            this.PreviewButton.UseVisualStyleBackColor = true;
+            this.PreviewButton.Click += new System.EventHandler(this.PreviewButton_Click);
+            // 
+            // RawButton
+            // 
+            this.RawButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RawButton.Location = new System.Drawing.Point(406, 365);
+            this.RawButton.Name = "RawButton";
+            this.RawButton.Size = new System.Drawing.Size(109, 43);
+            this.RawButton.TabIndex = 23;
+            this.RawButton.Text = "Raw";
+            this.RawButton.UseVisualStyleBackColor = true;
+            this.RawButton.Click += new System.EventHandler(this.RawButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 761);
+            this.Controls.Add(this.RawButton);
+            this.Controls.Add(this.PreviewButton);
+            this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BodyTextBox);
@@ -288,6 +324,9 @@ namespace Client
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox BodyTextBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.WebBrowser webBrowser;
+        private System.Windows.Forms.Button PreviewButton;
+        private System.Windows.Forms.Button RawButton;
     }
 }
 

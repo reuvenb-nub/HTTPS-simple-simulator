@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
-
+// using System.IO;
 namespace Client
 {
     public partial class Form1 : Form
@@ -22,6 +22,9 @@ namespace Client
         public Form1()
         {
             InitializeComponent();
+            RawButton.Enabled = false;
+            PreviewButton.Enabled = false;
+            webBrowser.Visible = false;
         }
         private void print_message(string message)
         {
@@ -35,6 +38,10 @@ namespace Client
             BodyTextBox.Text = "";
             RespHeadTextBox.AppendText(resp_items[0] + Environment.NewLine);
             BodyTextBox.AppendText(resp_items[1] + Environment.NewLine);
+
+            RawButton.Enabled = true;
+            PreviewButton.Enabled = true;
+            webBrowser.DocumentText = BodyTextBox.Text;
         }
         private void print_status(string message)
         {
@@ -263,6 +270,18 @@ namespace Client
             {
                 SuggestLabel.Visible = true;
             }
+        }
+
+        private void RawButton_Click(object sender, EventArgs e)
+        {
+            webBrowser.Visible = false;
+            BodyTextBox.Visible = true;
+        }
+
+        private void PreviewButton_Click(object sender, EventArgs e)
+        {
+            webBrowser.Visible = true;
+            BodyTextBox.Visible = false;
         }
 
         private void SendButton_Click(object sender, EventArgs e)
