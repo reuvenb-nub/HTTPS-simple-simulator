@@ -75,11 +75,6 @@ namespace project_https_emulator
             string request_method = cfields[0];
             string resource = cfields[1];
             string version = cfields[2];
-
-            string body = message.Split("\r\n\r\n")[1].Trim();
-            
-
-            string data = body.Remove(body.Length - 1, 1).Remove(0, 1).Trim();
             
 
             if (request_method == "GET")
@@ -88,7 +83,7 @@ namespace project_https_emulator
             }
             else if (request_method == "POST")
             {   
-                SendMessage(POSTMethod(resource, data), client);
+                SendMessage(POSTMethod(resource, message), client);
             }
             else if (request_method == "DELETE")
             {
@@ -122,10 +117,14 @@ namespace project_https_emulator
             }
         }
 
-        private string POSTMethod(string res, string a) {
+        private string POSTMethod(string res, string message) {
             string filePath = "../resources" + res;
             try
             {
+                string body = message.Split("\r\n\r\n")[1].Trim();
+
+                string a = body.Remove(body.Length - 1, 1).Remove(0, 1).Trim();
+
                 string key = "\"" + a.Split(": ")[0] + "\"";
                 string value = "\"" + a.Split(": ")[1] + "\"";
 
