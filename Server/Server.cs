@@ -35,7 +35,7 @@ namespace project_https_emulator
                 try
                 {
                     TcpClient client = listener.AcceptTcpClient();
-                    AddMessageToLog("Client connected.");
+                    AddMessageToLog(client.Client.RemoteEndPoint + ": connected.");
                     clients.Add(client);
                     Task.Run(() => HandleClient(client));
                 }
@@ -69,7 +69,7 @@ namespace project_https_emulator
 
         private void HandleMessage(string message, TcpClient client)
         {
-            AddMessageToLog(message);
+            AddMessageToLog(client.Client.RemoteEndPoint + ":\r\n" + message);
             string command = message.Substring(0, message.IndexOf("\r\n"));
             string[] cfields = command.Split(" ");
             string request_method = cfields[0];
